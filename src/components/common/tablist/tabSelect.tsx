@@ -1,32 +1,31 @@
-import { useState } from "react";
+// import "./tabComponentNew.scss";
+import { TabSelectProps } from "./tabSelect.types";
 
-interface TabSelectProps {}
-
-let tabs = [{ tab: "home" }, { tab: "dashboard" }, { tab: "about" }];
-
-const TabSelect: React.FC<TabSelectProps> = () => {
-  const [select, setSelect] = useState(0);
-
+function TabSelect({
+  tabs,
+  selectedTab,
+  onTabClick,
+  checkField = "id",
+}: TabSelectProps) {
   return (
-    <div className="w-100 m-2">
-      <div className={`w-100  d-flex justify-content-evenly border tabs`}>
-        {tabs.map((item, index) => {
-          return (
-            <span
-              className={`  w-100 p-2 text-center ${
-                select === index
-                  ? "border-bottom border-2 border-danger tab"
-                  : ""
-              }`}
-              onClick={() => setSelect(index)}
-              key={index}>
-              {item.tab}
-            </span>
-          );
-        })}
-      </div>
+    <div className="w-100">
+      <ul className="col-12 d-flex  border bg-white p-2 rounded-1  ">
+        {tabs.map((tab, index) => (
+          <li
+            className={`w-50 p-2 text-center list-unstyled cursor-pointer ${
+              selectedTab === tab[checkField]
+                ? " rounded-1 select-tab bg-info "
+                : ""
+            }`}
+            onClick={() => onTabClick(tab[checkField])}
+            key={`tab-${index}-${tab[checkField]}`}>
+            <span className=""> {tab.tab}</span>
+            {tab.count && <span className="mx-1">({tab.count})</span>}
+          </li>
+        ))}
+      </ul>
     </div>
   );
-};
+}
 
 export default TabSelect;

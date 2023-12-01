@@ -1,0 +1,123 @@
+:root {
+    --tooltip-background-color: #000;
+    --tooltip-text-color: #fff;
+}
+
+.custom-tooltip {
+    position: relative;
+    display: inline-block;
+    .custom-tooltip-text {
+        min-width: 180px;
+        max-width: 250px;
+        background-color: var(--tooltip-background-color);
+        color: var(--tooltip-text-color);
+        text-align: center;
+        border-radius: 5px;
+        padding: 8px 10px;
+        position: absolute;
+        z-index: 10000;
+        white-space: nowrap;
+        font-size: 0.8rem;
+    }
+}
+
+.tooltip-box {
+    z-index: 10000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.7s;
+}
+
+.custom-tooltip:hover {
+    .tooltip-box {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+
+/* TOP */
+
+.tooltip-top {
+    bottom: 15px;
+}
+
+.custom-tooltip-top {
+    .custom-tooltip-text {
+        bottom: 0px;
+        white-space: nowrap;
+    }
+}
+
+.arrow-top {
+    top: 100%;
+    left: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--tooltip-background-color) transparent transparent transparent;
+}
+
+
+/* LEFT */
+
+.tooltip-left {
+    right: 20px;
+}
+
+.custom-tooltip-left {
+    .custom-tooltip-text {
+        right: 100%;
+        white-space: nowrap;
+    }
+}
+
+.arrow-left {
+    top: 13px;
+    left: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--tooltip-background-color);
+}
+
+
+/* RIGHT */
+
+.tooltip-right {
+    left: 20px;
+}
+
+.custom-tooltip-right {
+    .custom-tooltip-text {
+        left: 100%;
+        white-space: nowrap;
+    }
+}
+
+.arrow-right {
+    top: 13px;
+    right: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent var(--tooltip-background-color) transparent transparent;
+}
+
+
+/* BOTTOM */
+
+.tooltip-bottom {
+    top: 65px;
+}
+
+.custom-tooltip-bottom {
+    .custom-tooltip-text {
+        bottom: 100%;
+    }
+}
+
+.arrow-bottom {
+    bottom: 35px;
+    right: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--tooltip-background-color) transparent;
+}
